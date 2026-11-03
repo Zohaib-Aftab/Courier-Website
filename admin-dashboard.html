@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Admin Dashboard</h1></header>
+
+<section class="filters">
+  <button onclick="renderOrders()">All Orders</button>
+  <button onclick="renderOrders('Pending')">Pending</button>
+  <button onclick="renderOrders('Checked')">Checked</button>
+  <button onclick="renderOrders('Out for Delivery')">Out for Delivery</button>
+  <button onclick="renderOrders('Delivered')">Delivered</button>
+</section>
+<button class="back-btn" onclick="goBack()">Back</button>
+
+<section id="ordersContainer" class="orders-container"></section>
+
+<script src="app.js"></script>
+<script>
+function goBack() {
+  window.history.back();
+}
+function renderOrders(filter='All'){
+  const ordersContainer = document.getElementById("ordersContainer");
+  let orders = getOrders();
+
+  if(filter !== 'All') orders = orders.filter(o => o.status === filter);
+
+  ordersContainer.innerHTML = orders.map(o => `
+    <div class="order-card">
+      <p><strong>Order ID:</strong> ${o.orderId}</p>
+
+      <p>
+        <strong>From:</strong> ${o.senderAddress} 
+        → 
+        <strong>To:</strong> ${o.receiverAddress}
+      </p>
+
+      <p><strong>Receiver Phone:</strong> ${o.phone}</p>
+
+      <p><strong>Status:</strong> ${o.status}</p>
+
+      <button onclick="updateStatus('${o.orderId}')">Next Status</button>
+      <button onclick="viewRoute()">See Route</button>
+    </div>
+  `).join('');
+}
+
+function updateStatus(id){
+  const orders = getOrders();
+  const index = orders.findIndex(o=>o.orderId===id);
+  if(index > -1){
+    const current = orders[index].status;
+    const workflow = ['Pending','Checked','Out for Delivery','Delivered'];
+    const next = workflow[Math.min(workflow.indexOf(current)+1, workflow.length-1)];
+    orders[index].status = next;
+    localStorage.setItem('orders', JSON.stringify(orders));
+    renderOrders();
+  }
+}
+
+function viewRoute(){
+  window.location.href = 'route.html';
+}
+
+renderOrders();
+</script>
+</body>
+</html>

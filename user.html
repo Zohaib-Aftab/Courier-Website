@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Place Order</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>Place Your Order</h1></header>
+
+<section class="form-container">
+  <form id="orderForm">
+    <input type="text" id="senderName" placeholder="Sender Name" required>
+    <select id="senderAddress" required>
+      <option value="">Select Sender Area</option>
+      <option>Defence</option><option>Dalmian</option><option>Landhi</option>
+      <option>Malir</option><option>FB Area</option><option>Cantt</option><option>Saddar</option>
+    </select>
+    <input type="text" id="receiverName" placeholder="Receiver Name" required>
+    <select id="receiverAddress" required>
+      <option value="">Select Receiver Area</option>
+      <option>Defence</option><option>Dalmian</option><option>Landhi</option>
+      <option>Malir</option><option>FB Area</option><option>Cantt</option><option>Saddar</option>
+    </select>
+    <input 
+  type="tel" 
+  id="phone" 
+  placeholder="Receiver Phone Number" 
+  required 
+  pattern="[0-9]{11}" 
+  title="Please enter exactly 11 digits (0-9 only)">
+    <button type="submit">Place Order</button>
+  </form>
+</section>
+<button class="back-btn" onclick="goBack()">Back</button>
+<script src="app.js"></script>
+<script>
+  function goBack() {
+  window.history.back();
+}
+document.getElementById("orderForm").onsubmit = function(e){
+  e.preventDefault();
+
+  const senderName = document.getElementById("senderName").value.trim();
+  const receiverName = document.getElementById("receiverName").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const senderAddress = document.getElementById("senderAddress").value;
+  const receiverAddress = document.getElementById("receiverAddress").value;
+
+
+  // Regex
+  const nameRegex = /^[A-Za-z\s]+$/;   // only letters and spaces
+  const phoneRegex = /^[0-9]{11}$/;    // exactly 13 digits
+
+  // Sender name validation
+  if (!nameRegex.test(senderName)) {
+    alert("Please enter valid name");
+    return;
+  }
+
+  // Receiver name validation
+  if (!nameRegex.test(receiverName)) {
+    alert("Please enter valid name");
+    return;
+  }
+
+  // Phone validation
+  if (!phoneRegex.test(phone)) {
+    alert("Please enter valid number");
+    return;
+  }
+  if (senderAddress === receiverAddress) {
+  alert("Sender and Receiver areas cannot be the same");
+  return;
+}
+
+  const order = {
+    orderId: Date.now().toString(),
+    senderName: senderName,
+    senderAddress: document.getElementById("senderAddress").value,
+    receiverName: receiverName,
+    receiverAddress: document.getElementById("receiverAddress").value,
+    phone: phone,
+    status: "Pending"
+  };
+
+  saveOrder(order);
+  alert("✅ Order Placed Successfully");
+  this.reset();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZoFas App - Travelling Salesman Problem</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+<header>
+    <h1>ZoFas App</h1>
+</header>
+
+<section class="description">
+    <h2>Travelling Salesman Problem (TSP)</h2>
+    <p>
+        The Travelling Salesman Problem is a classic optimization problem where a salesman
+        must visit every city exactly once and return to the starting city with the minimum
+        possible travel distance. This demonstration uses a brute force approach to calculate
+        the shortest route between major areas of Karachi.
+    </p>
+</section>
+<section class="controls">
+    <label for="startCity">Select Starting Area:</label>
+    <select id="startCity"></select>
+    <button id="calculateBtn">Calculate</button>
+</section>
+
+<section class="graph-container">
+    <svg id="graph" width="800" height="450"></svg>
+</section>
+
+<section class="result">
+    <p id="routeText">Route: —</p>
+    <p id="distanceText">Total Distance: —</p>
+</section>
+
+<button class="back-btn" onclick="goBack()">Back</button>
+<footer>
+    Made By Zohaib Aftab and Fasih-Ur-Rehman
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

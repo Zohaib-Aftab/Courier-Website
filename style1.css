@@ -1,0 +1,289 @@
+/* =====================
+   RESET & GLOBAL
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, #f4f6f9, #eef2f7);
+    color: #333;
+}
+
+/* =====================
+   HEADER
+===================== */
+header {
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    padding: 25px 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+header h1 {
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+}
+
+/* =====================
+   DESCRIPTION CARD
+===================== */
+.description {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 25px 30px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+}
+
+.description h2 {
+    margin-bottom: 12px;
+    color: #1e3c72;
+}
+
+.description p {
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* =====================
+   CONTROLS
+===================== */
+.controls {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.controls label {
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.controls select {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #cdd6e3;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+}
+
+.controls select:focus {
+    outline: none;
+    border-color: #2a5298;
+    box-shadow: 0 0 0 3px rgba(42,82,152,0.15);
+}
+
+.controls button {
+    padding: 10px 22px;
+    margin-left: 10px;
+    font-size: 0.95rem;
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(42,82,152,0.35);
+}
+
+/* =====================
+   GRAPH AREA
+===================== */
+.graph-container {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+#graph {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* =====================
+   RESULT SECTION
+===================== */
+.result {
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 25px auto 35px;
+}
+
+.result p {
+    margin: 6px 0;
+}
+
+#routeText {
+    font-weight: 600;
+    color: #1e3c72;
+}
+
+#distanceText {
+    font-weight: 500;
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+    background: linear-gradient(90deg, #1e3c72, #16325c);
+    color: white;
+    text-align: center;
+    padding: 14px;
+    margin-top: 30px;
+    font-size: 0.9rem;
+}
+.back-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 12px 22px;
+    background: linear-gradient(135deg, #2a5298, #1e3c72);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(42,82,152,0.45);
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+}
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .description {
+        margin: 25px 15px;
+    }
+
+    #graph {
+        width: 100%;
+        height: auto;
+    }
+}
+/* =====================
+   MOBILE RESPONSIVE
+   MAX WIDTH: 576px
+===================== */
+
+@media (max-width: 576px) {
+
+    /* HEADER */
+    header {
+        padding: 20px 10px;
+    }
+
+    header h1 {
+        font-size: 1.9rem;
+    }
+
+    /* DESCRIPTION */
+    .description {
+        width: calc(100% - 24px);
+        margin: 25px auto;
+        padding: 20px 18px;
+    }
+
+    .description h2 {
+        font-size: 1.35rem;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    .description p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    /* CONTROLS */
+    .controls {
+        margin: 25px 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .controls label {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .controls select {
+        width: 100%;
+        padding: 13px;
+        font-size: 1rem;
+    }
+
+    .controls button {
+        width: 100%;
+        margin-left: 0;
+        padding: 13px;
+        font-size: 1rem;
+    }
+
+    /* GRAPH */
+    .graph-container {
+        width: 100%;
+        margin: 25px 0;
+        padding: 0 10px;
+        overflow: hidden;
+    }
+
+    #graph {
+        width: 100%;
+        height: auto;
+    }
+
+    /* RESULT */
+    .result {
+        width: calc(100% - 24px);
+        margin: 25px auto 40px;
+        font-size: 1rem;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+    .result p {
+        margin: 10px 0;
+    }
+
+    /* FOOTER */
+    footer {
+        margin-top: 25px;
+        padding: 15px 12px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* BACK BUTTON */
+    .back-btn {
+        bottom: 15px;
+        left: 15px;
+        padding: 11px 20px;
+        font-size: 0.95rem;
+    }
+}
